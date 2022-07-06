@@ -41,13 +41,8 @@ public class Menu {
         // option + ctrl + N to expand the File menu
         menu1.setMnemonic(KeyEvent.VK_A);
 
-        //add Edit menu
-        menu2 = new JMenu("Size");
-        menu2.setMnemonic(KeyEvent.VK_S);
-
         //add menus to the menu bar
         menuBar.add(menu1);
-        menuBar.add(menu2);
 
         //add menu items to the menu
         // Bubble Sort
@@ -64,7 +59,7 @@ public class Menu {
         // Selection Sort
         menuItem = new JMenuItem("Selection Sort");
         menu1.add(menuItem);
-        menuItem.addActionListener(new selectListener());
+        menuItem.addActionListener(new selectionListener());
         menuItem.setMnemonic(KeyEvent.VK_S);
         menuItem.setAccelerator(
                 KeyStroke.getKeyStroke(KeyEvent.VK_S,
@@ -99,95 +94,24 @@ public class Menu {
         // Heap Sort
         menuItem = new JMenuItem("Heap Sort");
         menu1.add(menuItem);        
-        menuItem.setMnemonic(KeyEvent.VK_M);
+        menuItem.setMnemonic(KeyEvent.VK_H);
         menuItem.addActionListener(new heapListener());
-
-        // For Size Menu
-        //copy
-        menuItem = new JMenuItem("5");
-        menu2.add(menuItem);
-        menuItem.addActionListener(new sizeListener());
-        menuItem.setMnemonic(KeyEvent.VK_C);
         menuItem.setAccelerator(
-                KeyStroke.getKeyStroke(KeyEvent.VK_C,
+                KeyStroke.getKeyStroke(KeyEvent.VK_H,
                         KeyEvent.META_DOWN_MASK));
-        //cut
-        menuItem = new JMenuItem("10");
-        menu2.add(menuItem);
-        menuItem.addActionListener(new sizeListener());
-        menuItem.setMnemonic(KeyEvent.VK_X);
-        menuItem.setAccelerator(
-                KeyStroke.getKeyStroke(KeyEvent.VK_X,
-                        KeyEvent.META_DOWN_MASK));
-        //paste
-        menuItem = new JMenuItem("25");
-        menu2.add(menuItem);
-        menuItem.addActionListener(new sizeListener());
-        menuItem.setMnemonic(KeyEvent.VK_V);
-        menuItem.setAccelerator(
-                KeyStroke.getKeyStroke(KeyEvent.VK_V,
-                        KeyEvent.META_DOWN_MASK));
-        //find
-//        menuItem = new JMenuItem("50");
-//        menu2.add(menuItem);
-//        menuItem.addActionListener(new sizeListener());
-//        menuItem.setMnemonic(KeyEvent.VK_F);
-//        menuItem.setAccelerator(
-//                KeyStroke.getKeyStroke(KeyEvent.VK_F,
-//                        KeyEvent.META_DOWN_MASK));
-//        //replace
-//        menuItem = new JMenuItem("75");
-//        menu2.add(menuItem);
-//        menuItem.addActionListener(new sizeListener());
-//        menuItem.setMnemonic(KeyEvent.VK_R);
-//        menuItem.setAccelerator(
-//                KeyStroke.getKeyStroke(KeyEvent.VK_R,
-//                        KeyEvent.META_DOWN_MASK));
-//        
-//        menuItem = new JMenuItem("100");
-//        menu2.add(menuItem);
-//        menuItem.addActionListener(new sizeListener());
-//        menuItem.setMnemonic(KeyEvent.VK_R);
-//        menuItem.setAccelerator(
-//                KeyStroke.getKeyStroke(KeyEvent.VK_R,
-//                        KeyEvent.META_DOWN_MASK));
-
+        
         //like a mac menu
         System.setProperty("apple.laf.useScreenMenuBar", "true");
 
     }
-    /*
-    private class menuListener implements ActionListener {
-        
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            SortAlgorithm algo = null;
-            MenuItem source = (MenuItem) e.getSource();
-            String menuName = source.getName();
-            if(menuName == "Merge Sort"){
-                 algo = new MergeSort();
-            }
-            else if(menuName == null){
-                throw new UnsupportedOperationException("No algorithm is selected");
-            }
-            
-            app.pushScreen(new SortingVisualizerScreen(app, algo));
-        }
-    }
-    */
-    private static class insertListener implements ActionListener {
+
+    private class insertListener implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-        }
-    }
+            app.pushScreen(
+                new SortingVisualizerScreen(app, new InsertionSort()));
 
-    private static class sizeListener implements ActionListener {
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
         }
     }
 
@@ -207,11 +131,13 @@ public class Menu {
         }
     }
 
-    private class selectListener implements ActionListener {
+    private class selectionListener implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody  
+            app.pushScreen(
+                new SortingVisualizerScreen(app, new SelectionSort()));
+
         }
     }
     
@@ -230,8 +156,5 @@ public class Menu {
             app.pushScreen(
                 new SortingVisualizerScreen(app, new BubbleSort()));
         }
-        
-        
-
     }
 }

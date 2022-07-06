@@ -89,27 +89,30 @@ public class SortingVisualizerScreen extends Screen {
         // Sorting array visualizer
         //add(sortArray);
         
-        // Sort Button
+        // Add Buttons
         JButton sortButton = new JButton("Sort!");
         buttonContainer.add(sortButton);
+        JButton newArrayButton = new JButton("Generate New Array");
+        buttonContainer.add(newArrayButton);
+        
+        // Sort Button
         sortButton.addActionListener((ActionEvent e) -> {
+            newArrayButton.setText("Stop and Generate New Array");
             startVisSort();           
         });
         
+        // Generate New Array Button
         // stops execution if already running then generate New Array Button
-        JButton newArrayButton = new JButton("Generate New Array");
-        buttonContainer.add(newArrayButton);
         newArrayButton.addActionListener((ActionEvent e) -> {
+            newArrayButton.setText("Generate New Array");
             swingWorker.cancel(true);
             shuffleAndReset();
         });        
         
         // Algorithm Description
         descContainer.setBorder(BorderFactory.createTitledBorder(algorithm.getName()));
-        //JLabel description = new JLabel(algorithm.getDescription());
         JTextArea textArea= new JTextArea(algorithm.getDescription(),3,90);
         textArea.setLineWrap(true);
-        //textArea.setText(algorithm.getDescription());
         JScrollPane scrollArea = new JScrollPane(textArea);
         // set text field size
         textArea.setMaximumSize(new Dimension(27, 100));

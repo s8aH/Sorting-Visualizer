@@ -8,38 +8,11 @@
  * @author maryhan
  */
 public class QuickSort implements SortAlgorithm {
-    private long stepDelay = 20;
-    
-    public void quickSort(SortArray array, int start, int end){
-        int p = partition(array, start, end);
-        quickSort(array, 0, p);
-        quickSort(array, p, end);        
-    }
-    
-    // Choose a pivot and put all lesser value than pivot in left and greater values in right
-    // return the index of the pivot
-    public int partition(SortArray array, int start, int end){
-        int pivot = array.getValue(end);
-        int pIdx = start;
-        for(int i=start;i<end;i++){
-            if(array.getValue(i)<pivot){
-                array.swap(i,pIdx,stepDelay);
-                pIdx++;
-            }
-        }
-        array.swap(end, pIdx, stepDelay);
-        return pIdx;
-    }
+    private long stepDelay = 2;
 
     @Override
     public String getName() {
         return "Quick Sort";
-    }
-
-    @Override
-    public void runSort(SortArray array) {
-        
-        quickSort(array, 0, array.arraySize()-1);
     }
 
     @Override
@@ -84,4 +57,33 @@ public class QuickSort implements SortAlgorithm {
         return "O(log n)";
     }
     
+    @Override
+    public void runSort(SortArray array) {       
+        quickSort(array, 0, array.arraySize()-1);
+    }
+    
+    public void quickSort(SortArray array, int start, int end){
+        if(start < end){
+            int p = partition(array, start, end);
+            quickSort(array, 0, p);
+            quickSort(array, p+1, end);
+        }               
+    }
+    
+    // Takes last element as pivot, places the pivot at its appropriate position 
+    // such that all lesser values (lesser than pivot) are to left of pivot and 
+    // all greater values are to right of pivot, and then returns the correct 
+    // position of the pivot
+    public int partition(SortArray array, int start, int end){
+        int pivot = array.getValue(end); // pivot
+        int pIdx = start; // right position of pivot found so far
+        for(int i=start;i<end;i++){
+            if(array.getValue(i)<pivot){
+                array.swap(i,pIdx,stepDelay);
+                pIdx++;
+            }
+        }
+        array.swap(end, pIdx, stepDelay);
+        return pIdx;
+    }    
 }

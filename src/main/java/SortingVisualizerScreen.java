@@ -1,10 +1,13 @@
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -25,6 +28,7 @@ import javax.swing.SwingWorker;
 public class SortingVisualizerScreen extends Screen {
     private final SortArray sortArray;
     private final SortAlgorithm algorithm;
+    public static final int changeInDelay = 6;
     SwingWorker swingWorker;
     
     public SortingVisualizerScreen(MainApp app, SortAlgorithm algo) {
@@ -91,14 +95,37 @@ public class SortingVisualizerScreen extends Screen {
         
         // Add Buttons
         JButton sortButton = new JButton("Sort!");
+        sortButton.setBackground(Color.BLACK);
+        sortButton.setOpaque(true);
         buttonContainer.add(sortButton);
+        
+        Icon icon = new ImageIcon("fast-forward.png");
+        JButton fastForwardButton = new JButton(icon);
+        fastForwardButton.setBackground(Color.BLACK);
+        fastForwardButton.setOpaque(true);
+        buttonContainer.add(fastForwardButton);
+        
         JButton newArrayButton = new JButton("Generate New Array");
-        buttonContainer.add(newArrayButton);
+        newArrayButton.setBackground(Color.BLACK);
+        newArrayButton.setOpaque(true);
+        buttonContainer.add(newArrayButton);        
         
         // Sort Button
         sortButton.addActionListener((ActionEvent e) -> {
             newArrayButton.setText("Stop and Generate New Array");
             startVisSort();           
+        });
+        
+        // Fast Forward Button
+        fastForwardButton.addActionListener((ActionEvent e) -> {
+            long currDelay = algorithm.getDelay();
+            if(currDelay > changeInDelay){
+                long newDelay = currDelay - changeInDelay;
+                algorithm.setDelay(newDelay);
+            }else{
+                // fast forward is disabled since it has reached the maximum speed
+                Icon inactiveIcon = new ImageIcon("fast-forward-disabled.png");
+                fastForwardButton.setIcon(inactiveIcon);             }
         });
         
         // Generate New Array Button

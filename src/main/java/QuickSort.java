@@ -8,7 +8,7 @@
  * @author maryhan
  */
 public class QuickSort implements SortAlgorithm {
-    private long stepDelay = 2;
+    private long stepDelay = 1;
 
     @Override
     public String getName() {
@@ -24,7 +24,10 @@ public class QuickSort implements SortAlgorithm {
 "	§ Pick a random element as pivot\n" +
 "	§ Pick median as pivot\n" +
 "○ A Divide and Conquer algorithm\n" +
-"	§a strategy of solving a large problem by. breaking the problem into smaller sub-problems. solving the sub-problems, then combining the solutions to the sub-problems to find the solution to the original problem";
+"	§ Def: a strategy of solving a large problem by breaking the problem into smaller sub-problems. solving the sub-problems, then combining the solutions to the sub-problems to find the solution to the original problem\n"
+                + "	§ Divide by choosing the pivot in the subarray \n"
+                + "	§ Conquer by recursively the subarrays to the left and right of the pivot";
+        
     }
 
     @Override
@@ -65,7 +68,8 @@ public class QuickSort implements SortAlgorithm {
     public void quickSort(SortArray array, int start, int end){
         if(start < end){
             int p = partition(array, start, end);
-            quickSort(array, 0, p);
+            // Divide
+            quickSort(array, 0, p-1);
             quickSort(array, p+1, end);
         }               
     }

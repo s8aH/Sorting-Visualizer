@@ -17,15 +17,6 @@ public class SelectionSort implements SortAlgorithm{
         return "Selection Sort";
     }
 
-    // take the current element and exchange it with the smallest element on the
-    // right hand side of the current element.
-    public void selectionSort(SortArray array){
-        for(int i=0;i<array.arraySize();i++){
-            int min = array.findMin(i);
-            array.swap(i, min, stepDelay);
-        }
-    }
-
     @Override
     public String getDescription() {
         return "○ In every iteration of selection sort, find the minimum value in the unsorted subarray and is swapped with the current value and is moved to the sorted subarray.";
@@ -64,5 +55,14 @@ public class SelectionSort implements SortAlgorithm{
     @Override
     public void runSort(SortArray arry) {
         selectionSort(arry);
+    }
+    
+    // take the current element and exchange it with the smallest element on the
+    // right hand side of the current element.
+    public void selectionSort(SortArray array){
+        for(int i=0;i<array.arraySize();i++){
+            int min = array.findMin(i);
+            array.swap(i, min, stepDelay);
+        }
     }
 }

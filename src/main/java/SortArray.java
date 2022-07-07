@@ -84,12 +84,12 @@ class SortArray extends JPanel {
         }
     }
     
-    // Find the minimum value from index idx to the end of the array.
+    // Find the position of the minimum value from index idx to the end of the array.
     public int findMin(int idx){
-        int min = getValue(idx);
+        int min = idx;
         for(int i=idx+1;i<arraySize();i++){
-            if(getValue(i) < min){
-                min = getValue(i);
+            if(getValue(i) < getValue(min)){
+                min = i;
             }
         }
         return min;
@@ -152,7 +152,7 @@ class SortArray extends JPanel {
             int xcor = i + (BAR_WIDTH - 1) * i;
             int ycor = WIN_HEIGHT - bar_height;
             
-            panelGraphics.setColor(new Color(255,255-col,255-col));
+            panelGraphics.setColor(new Color(255,255,255-col));
             panelGraphics.fillRect(xcor, ycor, BAR_WIDTH, bar_height);
             
             if (barColours[i] > 0) {

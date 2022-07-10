@@ -30,12 +30,11 @@ class SortArray extends JPanel {
     
     private SortAlgorithm algorithm;
     private String algoName = "";
-    private JSpinner spinner;
     private long algorithmDelay = 0;
     
     // Constructor to set values and the background
     public SortArray(){
-        setBackground(Color.GRAY);
+        setBackground(Color.BLACK);
         barColours = new int[NUM_BARS];
         array = new int [NUM_BARS];
         for (int i = 0; i < NUM_BARS; i++) {
@@ -44,6 +43,7 @@ class SortArray extends JPanel {
         }
     }
     
+    // Setters
     public void setName(String algoName) {
         this.algoName = algoName;
     }
@@ -52,6 +52,13 @@ class SortArray extends JPanel {
         array[idx] = val;
     }
     
+    // sets algorithm
+    public void setAlgorithm(SortAlgorithm algorithm) {
+        this.algorithm = algorithm;
+        algorithmDelay = algorithm.getDelay();
+    }
+    
+    // getters
     public int getValue(int index){
         return array[index];
     }
@@ -67,12 +74,6 @@ class SortArray extends JPanel {
     
     public String getAlgorithmName(){
         return algoName;
-    }
-
-    // sets algorithm
-    public void setAlgorithm(SortAlgorithm algorithm) {
-        this.algorithm = algorithm;
-        algorithmDelay = algorithm.getDelay();
     }
     
     // shuffles the array values by swapping random indices

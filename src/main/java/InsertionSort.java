@@ -62,8 +62,8 @@ public class InsertionSort implements SortAlgorithm{
     // insertion sort algorithm
     // calls slide function on all elements of array
     private void insertionSort(SortArray array) {
-        for(int i=0;i<array.arraySize();i++){
-            slide(array, array.getValue(array.arraySize()-1));
+        for(int i=1;i<array.arraySize();i++){
+            slide(array, i);
         }
     }
     

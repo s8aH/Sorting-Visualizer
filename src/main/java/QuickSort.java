@@ -18,7 +18,7 @@ public class QuickSort implements SortAlgorithm {
     @Override
     public String getDescription() {
         return "○ It picks an element as pivot and partitions an array around the picked pivot.\n" +
-"○ Different version of quicksort that pick pivot in different ways:\n" +
+"○ There are different versions of quicksort that pick pivot in different ways:\n" +
 "	§ Always pick first element as pivot\n" +
 "	§ Always pick last element as pivot\n" +
 "	§ Pick a random element as pivot\n" +

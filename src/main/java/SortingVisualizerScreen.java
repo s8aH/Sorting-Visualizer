@@ -26,9 +26,13 @@ import javax.swing.SwingWorker;
  * @author maryhan
  */
 public class SortingVisualizerScreen extends Screen {
+    private static final int changeInDelay = 6;
+    private static final long MAX_DELAY = changeInDelay * 6;
+    private static final long MIN_DELAY = 2;
+    
     private final SortArray sortArray;
     private final SortAlgorithm algorithm;
-    public static final int changeInDelay = 6;
+    
     SwingWorker swingWorker;
     
     public SortingVisualizerScreen(MainApp app, SortAlgorithm algo) {
@@ -89,43 +93,63 @@ public class SortingVisualizerScreen extends Screen {
         perfContainer.setLayout(new BoxLayout(perfContainer, BoxLayout.X_AXIS));        
         smallPanelL.setLayout(new BoxLayout(smallPanelL, BoxLayout.Y_AXIS));        
         smallPanelR.setLayout(new BoxLayout(smallPanelR, BoxLayout.Y_AXIS));        
-
-        // Sorting array visualizer
-        //add(sortArray);
         
         // Add Buttons
+        
+        // sort button
         JButton sortButton = new JButton("Sort!");
         sortButton.setBackground(Color.BLACK);
         sortButton.setOpaque(true);
         buttonContainer.add(sortButton);
         
-        Icon icon = new ImageIcon("fast-forward.png");
-        JButton fastForwardButton = new JButton(icon);
+        // rewind button
+        Icon rewindIcon = new ImageIcon("rewind.png");
+        JButton rewindButton = new JButton(rewindIcon);
+        rewindButton.setBackground(Color.BLACK);
+        rewindButton.setOpaque(true);
+        buttonContainer.add(rewindButton);
+        
+        // fast forward button
+        Icon fastForwardIcon = new ImageIcon("fast-forward.png");
+        JButton fastForwardButton = new JButton(fastForwardIcon);
         fastForwardButton.setBackground(Color.BLACK);
         fastForwardButton.setOpaque(true);
         buttonContainer.add(fastForwardButton);
         
+        // generate new array button
         JButton newArrayButton = new JButton("Generate New Array");
         newArrayButton.setBackground(Color.BLACK);
         newArrayButton.setOpaque(true);
         buttonContainer.add(newArrayButton);        
         
-        // Sort Button
+        // Sort Button listener
         sortButton.addActionListener((ActionEvent e) -> {
             newArrayButton.setText("Stop and Generate New Array");
             startVisSort();           
         });
         
-        // Fast Forward Button
+        // Rewind Button listener
+        rewindButton.addActionListener((ActionEvent e) -> {
+            long currDelay = algorithm.getDelay();
+            if(MAX_DELAY > currDelay){
+                long newDelay = currDelay + changeInDelay;
+                algorithm.setDelay(newDelay);
+            }else{
+                // rewind is disabled since it has reached the minimum speed 
+                rewindButton.setIcon(new ImageIcon("rewind disabled.png"));
+            }
+        });
+        
+        // Fast Forward Button listener
         fastForwardButton.addActionListener((ActionEvent e) -> {
             long currDelay = algorithm.getDelay();
-            if(currDelay > changeInDelay){
+            if(currDelay > MIN_DELAY){
                 long newDelay = currDelay - changeInDelay;
                 algorithm.setDelay(newDelay);
             }else{
                 // fast forward is disabled since it has reached the maximum speed
-                Icon inactiveIcon = new ImageIcon("fast-forward-disabled.png");
-                fastForwardButton.setIcon(inactiveIcon);             }
+                fastForwardButton.setIcon(new ImageIcon("fast-forward-disabled.png"));             
+            }
         });
         
         // Generate New Array Button

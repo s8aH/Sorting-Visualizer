@@ -71,13 +71,14 @@ public class InsertionSort implements SortAlgorithm{
     // Assumes array is sorted, and loc is valid
     private void slide(SortArray array, int loc){
         int temp = array.getValue(loc);
-        int j = loc;
+        int j = loc-1;
         
-        while(j>0 && array.getValue(j-1)>temp){
-            array.setValue(j, array.getValue(j-1));
+        // compare temp with each element on the left of it until a smaller element is found
+        while(j>=0 && array.getValue(j)>temp){
+            array.setValue(j+1, array.getValue(j), stepDelay);
             j--;
         }
-        array.setValue(j, temp);          
+        array.setValue(j+1, temp, stepDelay);          
     }
         
 }

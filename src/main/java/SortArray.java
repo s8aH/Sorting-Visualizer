@@ -47,8 +47,15 @@ class SortArray extends JPanel {
         this.algoName = algoName;
     }
     
-    public void setValue(int idx, int val){
+    public void setValue(int idx, int val, long millisecondDelay){
         array[idx] = val;
+        
+        repaint();
+        try {
+            Thread.sleep(millisecondDelay);
+        } catch (InterruptedException ex) {
+            Thread.currentThread().interrupt();
+        }
     }
     
     // sets algorithm

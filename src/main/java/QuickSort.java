@@ -80,14 +80,14 @@ public class QuickSort implements SortAlgorithm {
     // position of the pivot
     public int partition(SortArray array, int start, int end){
         int pivot = array.getValue(end); // pivot
-        int pIdx = start; // right position of pivot found so far
+        int pIdx = start-1; // right position of pivot found so far
         for(int i=start;i<end;i++){
-            if(array.getValue(i)<pivot){
-                array.swap(i,pIdx,stepDelay);
+            if(array.getValue(i)<=pivot){
                 pIdx++;
+                array.swap(i,pIdx,stepDelay);
             }
         }
-        array.swap(end, pIdx, stepDelay);
-        return pIdx;
+        array.swap(end, pIdx+1, stepDelay);
+        return pIdx+1;
     }    
 }

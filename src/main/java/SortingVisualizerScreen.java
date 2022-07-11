@@ -28,6 +28,7 @@ import javax.swing.SwingWorker;
 public class SortingVisualizerScreen extends Screen {
     private static final int changeInDelay = 6;
     private static final long MAX_DELAY = changeInDelay * 6;
+    private static final long DEFAULT_DELAY = 20;
     private static final long MIN_DELAY = 2;
     
     private final SortArray sortArray;
@@ -125,6 +126,7 @@ public class SortingVisualizerScreen extends Screen {
         // Sort Button listener
         sortButton.addActionListener((ActionEvent e) -> {
             newArrayButton.setText("Stop and Generate New Array");
+            sortButton.setEnabled(false);
             startVisSort();           
         });
         
@@ -156,6 +158,11 @@ public class SortingVisualizerScreen extends Screen {
         // stops execution if already running then generate New Array Button
         newArrayButton.addActionListener((ActionEvent e) -> {
             newArrayButton.setText("Generate New Array");
+            sortButton.setEnabled(true);
+            algorithm.setDelay(DEFAULT_DELAY);
+            fastForwardButton.setIcon(fastForwardIcon);
+            rewindButton.setIcon(rewindIcon);
+            
             swingWorker.cancel(true);
             shuffleAndReset();
         });        

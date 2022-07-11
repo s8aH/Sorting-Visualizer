@@ -69,7 +69,7 @@ public class QuickSort implements SortAlgorithm {
         if(start < end){
             int p = partition(array, start, end);
             // Divide
-            quickSort(array, 0, p-1);
+            quickSort(array, start, p-1);
             quickSort(array, p+1, end);
         }               
     }
@@ -84,10 +84,10 @@ public class QuickSort implements SortAlgorithm {
         for(int i=start;i<end;i++){
             if(array.getValue(i)<=pivot){
                 pIdx++;
-                array.swap(i,pIdx,stepDelay);
+                array.swap(pIdx, i,stepDelay);
             }
         }
-        array.swap(end, pIdx+1, stepDelay);
+        array.swap(pIdx+1, end, stepDelay);
         return pIdx+1;
     }    
 }

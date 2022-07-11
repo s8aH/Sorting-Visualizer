@@ -110,7 +110,7 @@ class SortArray extends JPanel {
         array[idx1] = array[idx2];
         array[idx2] = temp;
         
-        // bars being swapped are set to pink
+        // colour the bars that are being swapped
         barColours[idx1] = 100;
         barColours[idx2] = 100;
         

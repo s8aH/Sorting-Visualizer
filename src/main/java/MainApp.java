@@ -20,12 +20,18 @@ public class MainApp {
             
     public MainApp(){
         window = new JFrame("Sorting Visualizer"); // titles for the window
+    }    
+       
+    // getters
+    public JFrame getWindow(){
+        return window;
     }
     
     public Screen getCurrentScreen(){
         return screen;
     }
     
+    // pushes the screen to the window
     public void pushScreen(Screen screen){
         this.screen = screen;
         window.setContentPane(screen);
@@ -33,9 +39,9 @@ public class MainApp {
     }
     
     public void start(){
-        Menu menu = new Menu(this, window);
-        menu.makeMenu();
-        pushScreen(new MainMenuScreen(this));
+        MainMenuScreen mainMenu = new MainMenuScreen(this);
+        
+        pushScreen(mainMenu);
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
       
         window.setVisible(true); // to display the window

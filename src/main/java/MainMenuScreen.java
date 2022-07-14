@@ -70,8 +70,8 @@ public class MainMenuScreen extends Screen {
 
         // add buttons to button group
         displayButtonGroup = new ButtonGroup();
-        displayButtonGroup.add(imageButton);
         displayButtonGroup.add(barButton);
+        displayButtonGroup.add(imageButton);        
 
         //add buttons to panel
         JPanel panel = new JPanel();

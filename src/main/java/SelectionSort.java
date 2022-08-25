@@ -1,4 +1,7 @@
 
+import java.util.ArrayList;
+
+
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -65,4 +68,27 @@ public class SelectionSort implements SortAlgorithm{
             array.swap(i, min, stepDelay);
         }
     }
+    
+    // Image Sort
+    @Override
+    public void runSort(PPMFrame image) {
+        selectionSort(image);
+    }
+    
+    public void selectionSort(PPMFrame image){
+        PixelList pixels = image.getPixels();
+        int refreshRate = 0;
+        for(int i=0;i<pixels.arraySize();i++){
+            int min = pixels.findMin(i);
+            pixels.swap(i, min);
+            
+            refreshRate++;
+            if(refreshRate >= 1000){
+                refreshRate = 0;
+                image.refresh();
+            }
+        }        
+    }
+
+    
 }

@@ -41,10 +41,7 @@ public class MainMenuScreen extends Screen {
     private void makeContent() {        
         setBorderLayout();
         makeInstruction();
-        makeDisplayTypeButtons();
-        // make menu
-        Menu menu = new Menu(app, app.getWindow(), displayType);
-        menu.makeMenu();
+        //makeDisplayTypeButtons();
     }
     
     // makes a panel and set its layour and border

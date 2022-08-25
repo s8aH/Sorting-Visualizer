@@ -14,7 +14,9 @@ public interface SortAlgorithm {
         
     public String getName();
     
-    public void runSort(SortArray array);  
+    public void runSort(SortArray array);
+    
+    public void runSort(PPMFrame image);
 
     public String getDescription();
 

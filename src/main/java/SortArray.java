@@ -47,6 +47,7 @@ class SortArray extends JPanel {
         this.algoName = algoName;
     }
     
+    
     public void setValue(int idx, int val, long millisecondDelay){
         array[idx] = val;
         
@@ -130,7 +131,7 @@ class SortArray extends JPanel {
         repaint();
     }
     
-    // adds a single value at the given index of the array then repaints
+    // adds a single value at the given index of the array, set bar colour, then repaints
     public void addValue(int index, int val, long millisecondDelay){
         array[index] = val;
         barColours[index] = 100;

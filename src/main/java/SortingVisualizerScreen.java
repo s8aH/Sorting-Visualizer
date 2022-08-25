@@ -97,18 +97,18 @@ public class SortingVisualizerScreen extends Screen {
         
         // Add Buttons
         
-        // sort button
-        JButton sortButton = new JButton("Sort!");
-        sortButton.setBackground(Color.BLACK);
-        sortButton.setOpaque(true);
-        buttonContainer.add(sortButton);
-        
         // rewind button
         Icon rewindIcon = new ImageIcon("rewind.png");
         JButton rewindButton = new JButton(rewindIcon);
         rewindButton.setBackground(Color.BLACK);
         rewindButton.setOpaque(true);
         buttonContainer.add(rewindButton);
+        
+        // sort button
+        JButton sortButton = new JButton(new ImageIcon("play.png"));
+        sortButton.setBackground(Color.BLACK);
+        sortButton.setOpaque(true);
+        buttonContainer.add(sortButton);
         
         // fast forward button
         Icon fastForwardIcon = new ImageIcon("fast-forward.png");

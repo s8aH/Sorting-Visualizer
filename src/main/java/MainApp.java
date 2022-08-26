@@ -1,5 +1,6 @@
 
 import javax.swing.JFrame;
+import javax.swing.SwingUtilities;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -20,15 +21,13 @@ public class MainApp {
     public static final int WIN_HEIGHT = 900;
 
     public int width, height, nColors;
-    //public PixelList list;
 
     public MainApp() {
         window = new JFrame("Sorting Visualizer");
     }
 
     public static void main(String[] args){
-        MainApp app = new MainApp();
-        app.start();
+        SwingUtilities.invokeLater(() -> new MainApp().start()); // this line makes the sort new array button work.
     }
     
     // getters

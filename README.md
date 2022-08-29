@@ -4,4 +4,4 @@ This program helps us visualize how sorting algorithms such as Merge Sort, Quick
 
 ## Demo
 Below is an animation of a sample run to visualize Merge Sort:
-![Alt Text](merge sort.gif)
+![Alt Text](https://github.com/s8aH/Sorting-Visualizer/blob/master/merge%20sort.gif)

@@ -51,7 +51,7 @@ public class MainMenuScreen extends Screen {
     
     private void makeInstruction(){
         // instruction
-        JLabel label = new JLabel("<html> You must select an algorithm and data type before <br />"
+        JLabel label = new JLabel("<html> You must select an algorithm and data type from the menu bar before <br />"
                 + "you can visualize it's execution on an array of numbers or pixels. </html>",
                 SwingConstants.CENTER);
         label.setFont(new Font("Al Bayan", Font.PLAIN, 30));

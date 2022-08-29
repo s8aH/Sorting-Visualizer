@@ -87,7 +87,7 @@ public class PPMFrame extends Screen {
     // update the menu bar by adding file menu 
     public JMenu makeFileMenu() {
         JMenu menu;
-        JMenuItem menuItem1, menuItem2;
+        JMenuItem menuItem1, menuItem2, menuItem3, menuItem4;
 
         // set up the File menu
         menu = new JMenu("File");
@@ -101,10 +101,18 @@ public class PPMFrame extends Screen {
                 KeyEvent.META_DOWN_MASK));
         menu.add(menuItem1);
 
-        // add default image
-        menuItem2 = new JMenuItem("kitten Image");
-        menuItem2.addActionListener(new ImageListener());
+        // add default images
+        menuItem2 = new JMenuItem("Kitten Image");
+        menuItem2.addActionListener(new ImageListener("kitten.ppm"));
         menu.add(menuItem2);
+        
+        menuItem3 = new JMenuItem("Galaxy Image");
+        menuItem3.addActionListener(new ImageListener("galaxy.ppm"));
+        menu.add(menuItem3);
+        
+        menuItem4 = new JMenuItem("Violin Image");
+        menuItem4.addActionListener(new ImageListener("violin.ppm"));
+        menu.add(menuItem4);
 
         return menu;
     }
@@ -193,10 +201,14 @@ public class PPMFrame extends Screen {
     }
 
     public class ImageListener implements ActionListener {
+        private String fileName;
+        public ImageListener(String fileName){
+            this.fileName = fileName;
+        }
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            File imageFile = new File("kitten.ppm");
+            File imageFile = new File(fileName);
             menu.openImage(imageFile, algorithm);
         }
     }

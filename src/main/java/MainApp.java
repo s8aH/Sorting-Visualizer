@@ -40,12 +40,11 @@ public class MainApp {
         // make menu
         menu = new Menu(this, window);
         menu.makeMenu();
-        //window.setJMenuBar(menu);
         pushScreen(mainMenu);
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
       
         window.setVisible(true); // to display the window
-        window.setSize(WIN_WIDTH, WIN_HEIGHT); // sets the size of our window, win_width pixels wide and
+        window.setSize(WIN_WIDTH, WIN_HEIGHT); // sets the size of our window, win_width pixels wide and wid_height high.
                 
     }
 

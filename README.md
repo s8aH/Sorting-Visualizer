@@ -1,6 +1,6 @@
 # Sorting-Visualizer
 
-This program helps us visualize how sorting algorithms such as Merge Sort, Quick Sort, Selection Sort, Insertion Sort, Bubble Sort, and Heap sort would sort a bar-graph or pixels in image using Swing animation tool. After selecting an algorithm and data representation type, the user can run an automated animation. The program will also allow the user to slow down and pace up the sorting processing for better understanding.
+This program visualizes how sorting algorithms (Merge, Quick, Selection, Insertion, Bubble, and Heap) would sort a bar graph or .ppm image pixels using the Swing animation tool. The program comes with a user-friendly settings menu, letting the user control the speed of the sorting processing, select one of two visualizations, and select an image from the options given or import their own image.
 
 ## Demo
 Below is an animation of a sample run to visualize Merge Sort:
